@@ -28,3 +28,61 @@ const reviews = [
     text: "Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ",
   },
 ];
+
+// getting the needed classes and ids
+
+const image = document.getElementById("person-img");
+const author = document.getElementById("author");
+const job = document.getElementById("job");
+const info = document.getElementById("info");
+const nextBtn = document.querySelector(".next-btn");
+const prevBtn = document.querySelector(".prev-btn");
+const randomBtn = document.querySelector(".random-btn");
+
+let number = 0;
+// when the web is loaded we want to put the first object in our array
+
+window.addEventListener("DOMContentLoaded", function () {
+  let review = reviews[number];
+  image.src = review.img;
+  author.textContent = review.name;
+  job.textContent = review.job;
+  info.textContent = review.text;
+});
+
+// eventListener
+
+nextBtn.addEventListener("click", function () {
+  number++;
+  if (number > reviews.length - 1) {
+    number = 0;
+  }
+  let review = reviews[number];
+  image.src = review.img;
+  author.textContent = review.name;
+  job.textContent = review.job;
+  info.textContent = review.text;
+});
+
+prevBtn.addEventListener("click", function () {
+  number--;
+  if (number < 0) {
+    number = reviews.length - 1;
+  }
+  let review = reviews[number];
+  image.src = review.img;
+  author.textContent = review.name;
+  job.textContent = review.job;
+  info.textContent = review.text;
+});
+
+// random card
+
+randomBtn.addEventListener("click", function () {
+  number = Math.floor(Math.random() * reviews.length);
+  let review = reviews[number];
+  image.src = review.img;
+  author.textContent = review.name;
+  job.textContent = review.job;
+  info.textContent = review.text;
+});
